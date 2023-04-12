@@ -1,0 +1,21 @@
+TableName,FieldName,FieldType,Description,RemoteTableName,RemoteFieldName,LocalJoinFieldName,Calculation,Where,DataType,Length,Precision,WriteOnce
+Character,ArchetypeName,Reference,,ArchetypeType,Name,ArchetypeTypeId,,,string,150,,
+Character,EliteInfluences,Aggregate,,Background,Notes,CharacterId,"string_agg(values,',')",BackgroundTypeId=9 AND Notes IS NOT NULL,string,MAX,,
+Background,BackgroundTypeName,Reference,,BackgroundType,Name,BackgroundTypeId,,,string,150,,
+Character,UnderworldInfluences,Aggregate,,Background,Notes,CharacterId,"string_agg(values,',')",BackgroundTypeId=10 AND Notes IS NOT NULL,string,MAX,,
+Character,FinalInfluences,Calculation,,,,,"concat(IIF(EliteInfluences IS NULL, '', concat('ELITE: ', EliteInfluences)),
+
+IIF(EliteInfluences IS NOT NULL AND UnderworldInfluences IS NOT NULL, '  *****  ',''),
+
+IIF(UnderworldInfluences IS NULL, '', concat('UNDERWORLD: ', UnderworldInfluences)))",,string,MAX,,
+Character,Created,Calculation,,,,,getdate(),,string,150,,1
+Chronicle,ChronicalStatusTypeName,Reference,,ChronicleStatusType,Name,ChronicleStatusTypeId,,,string,150,,
+GameDate,ChronicleName,Reference,,Chronicle,City,ChronicleId,,,string,150,,
+GameDate,GameLocationName,Reference,,GameLocation,Name,GameLocationId,,,string,150,,
+Gift,CharacterFirstName,Reference,,Character,FirstName,CharacterId,,,string,150,,
+Gift,GiftType,Reference,,GiftType,Name,GiftTypeId,,,string,150,,
+Ritual,RitualName,Reference,,RitualType,Name,RitualTypeId,,,string,150,,
+Character,FullName,Calculation,,,,,"concat(FirstName,' ', LastName)",,string,150,,
+Character,ClanTypeName,Reference,,ClanType,Name,ClanTypeId,,,string,150,,
+Character,ChronicalName,Reference,,Chronicle,Name,ChronicleId,,,string,150,,
+Background,CharacterFullName,Reference,,Character,FullName,CharacterId,,,string,150,,

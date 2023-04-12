@@ -1,0 +1,3 @@
+TableName,FieldName,FieldType,Description,RemoteTableName,RemoteFieldName,LocalJoinFieldName,Calculation,Where,DataType,Length,Precision,WriteOnce
+Character,ArchetypeName,Reference,,ArchetypeType,Name,ArchetypeTypeId,,,string,150,,
+Character,EliteInfluences,Aggregate,,Background,Notes,CharacterId,"string_agg(values,',')",BackgroundTypeId=9 AND Notes IS NOT NULL,string,MAX,,

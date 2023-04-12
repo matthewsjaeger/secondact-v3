@@ -1,0 +1,49 @@
+{
+  "ShowHidden": false,
+  "ShowAllFiles": false,
+  "SaveDisabled": false,
+  "SSoTmeProjectId": "a62b0dce-4a97-4329-a2a6-ac26a6438d42",
+  "Name": "second-actv3",
+  "ProjectSettings": [
+    {
+      "ProjectSettingId": "ff21a0e0-56a2-4113-b2dd-83cb07dc0c80",
+      "Name": "project-name",
+      "Value": "second-actv3"
+    }
+  ],
+  "ProjectTranspilers": [
+    {
+      "MatchedTranspiler": {
+        "TranspilerId": "bfad6f67-103c-420c-ba27-200ae64eea81",
+        "Name": "SqlSchemaToOdxml",
+        "Description": "Converts a Sql Xml file into an ODXML file, a widely supported type.."
+      },
+      "ProjectTranspilerId": "85b595d1-d14c-41ee-8c53-a08e6de3ec84",
+      "Name": "SqlSchemaToOdxml",
+      "RelativePath": "/LEGACY_DB/SqlSchema",
+      "CommandLine": "odxml42/sql-schema-to-odxml -i SqlSchema.xml -p project-name=second-act"
+    },
+    {
+      "MatchedTranspiler": {
+        "TranspilerId": "8d5a54e1-1e78-4ebd-8960-4e4262b6c284",
+        "Name": "ODXMLToSqlOnAirDb",
+        "Description": "ODXML To SqlOnAir Db"
+      },
+      "ProjectTranspilerId": "beae754e-c7e1-4410-8cbc-14375c3b217f",
+      "Name": "ODXMLToSQLonAirDb",
+      "RelativePath": "/SQLonAir",
+      "CommandLine": "effortless/odxml-to-sql-on-air-db -i ../LEGACY_DB/SqlSchema/DataSchema.odxml -i CalculatedFields.csv -p original-db=SecondActV3 -p sqlonair-db=SecondActV3_SQLonAir -p mode=split"
+    },
+    {
+      "MatchedTranspiler": {
+        "TranspilerId": "ccea0ffb-6635-4929-bb72-a54ed716d27c",
+        "Name": "OdxmlToSqlServerCreateDb",
+        "Description": "OdxmlToSqlServerCreateDb"
+      },
+      "ProjectTranspilerId": "6b0dd404-d2e2-4fc6-a308-3e709d463969",
+      "Name": "OdxmlToSqlServerCreateDb",
+      "RelativePath": "/SQLonAir",
+      "CommandLine": "odxml42/odxml-to-sqlserver-createdb -i ./test.dmxml -p project-name=SecondActV3 -p mode=split"
+    }
+  ]
+}
